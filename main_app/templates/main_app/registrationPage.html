@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+ <meta charset="UTF-8">
+ <title> Registration Form  </title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter&family=Sonsie+One&display=swap" rel="stylesheet">
+ <style>
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Inter', sans-serif;
+  }
+
+  body {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+   background: rgb(216, 216, 216);
+   background: linear-gradient(63deg, #98E79B -0.92%, rgba(152, 231, 155, 0.21) 98.04%);
+  }
+
+  .container {
+   max-width: 700px;
+   width: 100%;
+   background-color: #fff;
+   padding: 25px 30px;
+   border-radius: 5px;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .container .title {
+   font-size: 22px;
+   font-weight: 600;
+   position: relative;
+  }
+
+  .content form .user-details {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 20px 0 12px 0;
+  }
+
+  form .user-details .input-box {
+   margin-bottom: 15px;
+   width: calc(100% / 2 - 20px);
+  }
+
+  form .input-box span.details {
+   display: block;
+   font-weight: 500;
+   margin-bottom: 5px;
+  }
+
+  .user-details .input-box input {
+   height: 45px;
+   width: 100%;
+   outline: none;
+   font-size: 16px;
+   border-radius: 5px;
+   padding-left: 15px;
+   border: 1px solid #ccc;
+   border-bottom-width: 2px;
+   transition: all 0.3s ease;
+  }
+
+
+  form .gender-details .gender-title {
+   font-size: 20px;
+   font-weight: 500;
+  }
+
+  form .category {
+   display: flex;
+   width: 80%;
+   margin: 14px 0;
+   justify-content: space-between;
+  }
+
+  form .category label {
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+  }
+
+  form .category label .dot {
+   height: 18px;
+   width: 18px;
+   border-radius: 50%;
+   margin-right: 10px;
+   background: #d9d9d9;
+   border: 5px solid transparent;
+   transition: all 0.3s ease;
+  }
+
+  form .button {
+   height: 45px;
+   margin: 35px 0
+  }
+
+  form .button input {
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background-color: rgb(2, 125, 202);
+  }
+
+ </style>
+</head>
+
+<body>
+    <script>
+        function gLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.body.innerHTML = "Geolocation is not supported by your browser.";
+            }
+        }
+    
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            document.getElementById("latitude").value = latitude;
+            document.getElementById("longitude").value = longitude;
+        }
+    
+        gLocation();
+      </script>
+ <div class="container">
+  <div class="title">Registration</div>
+  <div class="content">
+   <form action="" method="POST">
+    {% csrf_token %}
+    <div class="user-details">
+     <div class="input-box">
+      <span class="details">Hospital Name</span>
+      <input type="text" placeholder="Enter your Hospital Name" name="username" required>
+     </div>
+     <div class="input-box">
+      <span class="details">Password</span>
+      <input type="password" placeholder="Enter your Password" name="password" required>
+     </div>
+     <div class="input-box">
+      <span class="details">Latitude</span>
+      <input type="text" id="latitude" placeholder="Enter Your Latitude" name="cord1" required>
+     </div>
+     <div class="input-box">
+      <span class="details">Longitude</span>
+      <input type="text" id="longitude" placeholder="Enter Your Longitude" name="cord2" required>
+     </div>
+     <div class="input-box">
+      <span class="details">Total Beds</span>
+      <input type="text" placeholder="Enter Total Beds" name="total_beds" required>
+     </div>
+     <div class="input-box">
+      <span class="details">Free Beds</span>
+      <input type="text" placeholder="Enter Free Beds" name="free_beds" required>
+     </div>
+
+    </div>
+    <div class="button">
+     <input type="submit" value="Register">
+    </div>
+   </form>
+  </div>
+ </div>
+
+</body>
+
+</html>
